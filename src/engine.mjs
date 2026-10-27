@@ -600,14 +600,13 @@ function 构建值节点行(数量值596) {
   } else if (数量值596.proto === 解码64('dHJvamFu')) {
     行列表595.push(`    password: ${处理本地值622(数量值596.password)}`);
     行列表595.push(`    udp: true`);
-    行列表595.push(`    client-fingerprint: ${处理本地值622(数量值596.fp || 'chrome')}`);
   }
   if (数量值596.tls) {
-    行列表595.push(`    servername: ${处理本地值622(服务名称指示592)}`);
+    行列表595.push(`    sni: ${处理本地值622(服务名称指示592)}`);
     if (数量值596.alpn && 数量值596.alpn.length) {
       行列表595.push(`    alpn: [${数量值596.alpn.map(甲值591 => 处理本地值622(甲值591)).join(', ')}]`);
     }
-    行列表595.push(`    skip-cert-verify: false`);
+    行列表595.push(`    skip-cert-verify: true`);
   }
   if (数量值596.network === 'ws' || 数量值596.network === 'xhttp') {
     行列表595.push(`    network: ws`);
