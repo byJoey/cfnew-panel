@@ -1,0 +1,24 @@
+name: Sync Upstream (cfnew-panel)
+
+on:
+  schedule:
+    # 每天 UTC 0:00（北京时间 8:00）自动拉取一次更新
+    - cron: '0 0 * * *'
+  # 支持在 GitHub 页面随时手动一键同步
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+
+      - name: Sync upstream changes
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
+        with:
+          target_sync_branch: main
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_branch: main
+          upstream_sync_repo: byJoey/cfnew-panel
+          test_mode: false
